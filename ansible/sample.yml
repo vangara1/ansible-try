@@ -1,7 +1,12 @@
 ---
 - name: consfigure nginx we server
   hosts: centos
+  become: true
   tasks:
+  - name: update the server
+    yum:
+      name: epel-release
+      state: installed
   - name: install nginx server
     yum:
       name: nginx
