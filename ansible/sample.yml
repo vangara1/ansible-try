@@ -7,11 +7,11 @@
     yum:
       name: epel-release
       state: installed
-  - name: install nginx server
+  - name: uninstall nginx server
     yum:
       name: nginx
-      state: abset
-  - name: start nginx server
+      state: absent
+  - name: stop nginx server
     service:
       name: nginx
       state: stopped
