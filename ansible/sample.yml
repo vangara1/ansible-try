@@ -1,0 +1,12 @@
+---
+- name: consfigure nginx we server
+  hosts: centos
+  tasks:
+  - name: install nginx server
+    yum:
+      name: nginx
+      state: latest
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
