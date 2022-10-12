@@ -9,8 +9,8 @@
       state: installed
   - name: install nginx server
     yum:
-      name: nginx
-      state: latest
+      name: nginx=1.18.0
+      state: present
   - name: start nginx server
     service:
       name: nginx
