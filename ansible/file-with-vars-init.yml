@@ -29,7 +29,7 @@
   become: True
   become_user: sand
   vars:
-    - app-file-location: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
+#    - app-file-location: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
     - location: /home/centos
     - version: 1.0.0
     - destination: /home/sand
