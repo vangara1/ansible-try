@@ -1,6 +1,6 @@
 ---
 - name: install node & npm
-  hosts: centos
+  hosts: "{{host}}"
   become: yes
   tasks:
     - name: update yum repo & cache
