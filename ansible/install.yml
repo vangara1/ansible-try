@@ -34,7 +34,7 @@
     - name: create the package
       file:
         name: package
-        path: /home/sand/
+        path: /home/sand
         state: directory
 #    - name: unpack the nodejs tar file
 #      unarchive:
