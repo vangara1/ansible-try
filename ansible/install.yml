@@ -20,6 +20,8 @@
         name: sand
         comment: sand admin
 #        group: centos
+      register: user_creation_result
+    - debug: msg={{user_creation_result}}
 
 
 - name: Deploy nodejs app
@@ -48,6 +50,8 @@
     - name: install dependencies
       npm:
         path: /home/sand/package
+        register: user_creation_result
+      - debug: msg={{user_creation_result}}:
     - name: start the application
       command:
         chdir: /home/sand/package/app
