@@ -23,12 +23,12 @@
         name: package
         path: /home/centos/
         state: directory
-#    - name: unpack the nodejs tar file
-#      unarchive:
-#        src: /home/centos/app-1.0.0.tgz
-#        dest: /home/centos/package
-#        remote_src: yes
     - name: unpack the nodejs tar file
-          unarchive:
-            src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
-            dest: /home/centos/package
+      unarchive:
+        src: /home/centos/app-1.0.0.tgz
+        dest: /home/centos/package
+        remote_src: yes
+#    - name: unpack the nodejs tar file
+#          unarchive:
+#            src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
+#            dest: /home/centos/package
