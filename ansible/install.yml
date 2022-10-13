@@ -13,6 +13,7 @@
 
 - name: create new user for node app
   hosts: centos
+  become: yes
   tasks:
     - name: create the user
       user:
