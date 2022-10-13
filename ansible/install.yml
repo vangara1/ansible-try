@@ -30,5 +30,5 @@
 #        remote_src: yes
     - name: unpack the nodejs tar file
           unarchive:
-            src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.zip
+            src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
             dest: /home/centos/package
