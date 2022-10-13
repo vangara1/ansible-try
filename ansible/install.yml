@@ -39,3 +39,5 @@
       command:
         chdir: /home/centos/package/package/app
         cmd: node server
+      async: 1000
+      poll: 0
