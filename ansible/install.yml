@@ -47,11 +47,11 @@
       unarchive:
         src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
         dest: /home/sand/
+        register: user_creation_result
+    - debug: msg={{user_creation_result}}:
     - name: install dependencies
       npm:
         path: /home/sand/package
-        register: user_creation_result
-      - debug: msg={{user_creation_result}}:
     - name: start the application
       command:
         chdir: /home/sand/package/app
