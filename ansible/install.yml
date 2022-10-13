@@ -41,3 +41,7 @@
         cmd: node server
       async: 1000
       poll: 0
+    - name: ensure app is running
+      shell: ps aux | grep node
+      register: app_status
+    - debug: msg={{app_status}}
