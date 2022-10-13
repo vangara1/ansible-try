@@ -1,6 +1,6 @@
 ---
 - name: install node & npm
-  hosts: "{{host}}"
+  hosts: centos
   become: yes
   tasks:
     - name: update yum repo & cache
@@ -13,13 +13,13 @@
 
 - name: create new user for node app
   hosts: centos
-  vars_files:
-    - install-vars
   become: yes
+  vars_files:
+      - install-vars
   tasks:
     - name: create the user
       user:
-        name: "{{name}}"
+        name: "{{name-user}}"
         comment: sand admin
 #        group: centos
       register: user_creation_result
@@ -28,10 +28,10 @@
 
 - name: Deploy nodejs app
   hosts: centos
+  become: True
+  become_user: "{{name-user}}"
   vars_files:
     - install-vars
-  become: True
-  become_user: "{{name}}"
   tasks:
 #    - name: copy nodejs folder tp a server
 #      copy:
@@ -53,15 +53,18 @@
         dest: "{{destination}}"
       register: user_creation_result
     - debug: msg={{user_creation_result.uid}}
+
     - name: install dependencies
       npm:
          path: "{{destination}}/package"
+
     - name: start the application
       command:
         chdir: "{{destination}}/package/app"
         cmd: node server
       async: 1000
       poll: 0
+
     - name: ensure app is running
       shell: ps aux | grep node
       register: app_status

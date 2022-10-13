@@ -3,4 +3,4 @@ location: /home/centos
 version: 1.0.0
 destination: /home/sand
 host: centos
-name: sand
+name-user: sand
