@@ -34,7 +34,7 @@
     - name: create the package
       file:
         name: package
-        path: /home/sand
+        path: /home/sand/
         state: directory
 #    - name: unpack the nodejs tar file
 #      unarchive:
@@ -44,13 +44,13 @@
     - name: unpack the nodejs tar file
       unarchive:
         src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
-        dest: /home/sand/package
+        dest: /home/sand/
     - name: install dependencies
       npm:
-        path: /home/sand/package/package
+        path: /home/sand/package
     - name: start the application
       command:
-        chdir: /home/sand/package/package/app
+        chdir: /home/sand/package/app
         cmd: node server
       async: 1000
       poll: 0
