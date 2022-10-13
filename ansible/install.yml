@@ -19,7 +19,7 @@
       user:
         name: sand
         comment: sand admin
-        group: centos
+#        group: centos
 
 
 - name: Deploy nodejs app
@@ -43,7 +43,7 @@
 #        remote_src: yes
     - name: unpack the nodejs tar file
       unarchive:
-        src: /home/sand/simple-nodejs-master/nodejs-app-1.0.0.tgz
+        src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
         dest: /home/sand/package
     - name: install dependencies
       npm:
