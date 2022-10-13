@@ -13,6 +13,8 @@
 
 - name: create new user for node app
   hosts: centos
+  vars_files:
+    - install-vars
   become: yes
   tasks:
     - name: create the user
@@ -26,6 +28,8 @@
 
 - name: Deploy nodejs app
   hosts: centos
+  vars_files:
+    - install-vars
   become: True
   become_user: "{{name}}"
   tasks:
