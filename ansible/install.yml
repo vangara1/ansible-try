@@ -11,8 +11,20 @@
           - nodejs
           - npm
 
+- name: create new user for node app
+  hosts: centos
+  tasks:
+    - name: create the user
+      user:
+        name: sand
+        comment: sand admin
+        group: admin
+
+
 - name: Deploy nodejs app
   hosts: centos
+  become: True
+  become_user: sand
   tasks:
 #    - name: copy nodejs folder tp a server
 #      copy:
@@ -21,7 +33,7 @@
     - name: create the package
       file:
         name: package
-        path: /home/centos/
+        path: /home/sand/
         state: directory
 #    - name: unpack the nodejs tar file
 #      unarchive:
@@ -30,14 +42,14 @@
 #        remote_src: yes
     - name: unpack the nodejs tar file
       unarchive:
-        src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
-        dest: /home/centos/package
+        src: /home/sand/simple-nodejs-master/nodejs-app-1.0.0.tgz
+        dest: /home/sand/package
     - name: install dependencies
       npm:
-        path: /home/centos/package/package
+        path: /home/sand/package/package
     - name: start the application
       command:
-        chdir: /home/centos/package/package/app
+        chdir: /home/sand/package/package/app
         cmd: node server
       async: 1000
       poll: 0
