@@ -58,7 +58,7 @@
     - debug: msg={{user_creation_result.uid}}
     - name: install dependencies
       npm:
-        path: "{{destination}}"/package
+        path: "{{destination}}/package"
     - name: start the application
       command:
         chdir: "{{destination}}/package/app"
