@@ -53,8 +53,6 @@
 
     - name: unpack the nodejs tar file
       unarchive:
-#        src: /home/centos/simple-nodejs-master/nodejs-app-{{version}}.tgz
-#        src: "{{app-file-location}}"
         src: "{{location}}/nodejs-app-{{version}}.tgz"
         dest: "{{destination}}"
       register: user_creation_result
