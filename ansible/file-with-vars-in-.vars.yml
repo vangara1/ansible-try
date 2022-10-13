@@ -1,6 +1,6 @@
 ---
 - name: install node & npm
-  hosts: "{{host}}"
+  hosts: centos
   become: yes
   tasks:
     - name: update yum repo & cache
@@ -12,7 +12,7 @@
           - npm
 
 - name: create new user for node app
-  hosts: "{{host}}"
+  hosts: centos
   become: yes
   tasks:
     - name: create the user
@@ -25,7 +25,7 @@
 
 
 - name: Deploy nodejs app
-  hosts: "{{host}}"
+  hosts: centos
   become: True
   become_user: "{{name}}"
   tasks:
