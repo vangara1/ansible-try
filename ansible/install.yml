@@ -32,3 +32,10 @@
       unarchive:
         src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
         dest: /home/centos/package
+    - name: install dependencies
+      npm:
+        path: /home/centos/package/package
+    - name: start the application
+      command:
+        chdir: /home/centos/package/package/app
+        cmd: node server
