@@ -18,7 +18,7 @@
       user:
         name: sand
         comment: sand admin
-        group: root
+        group: centos
 
 
 - name: Deploy nodejs app
