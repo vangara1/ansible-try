@@ -21,7 +21,7 @@
         comment: sand admin
 #        group: centos
       register: user_creation_result
-    - debug: msg={{user_creation_result}}
+    - debug: msg={{user_creation_result.uid}}
 
 
 - name: Deploy nodejs app
