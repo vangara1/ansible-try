@@ -19,7 +19,7 @@
   tasks:
     - name: create the user
       user:
-        name: "{{name-user}}"
+        name: "{{name_user}}"
         comment: sand admin
 #        group: centos
       register: user_creation_result
@@ -29,7 +29,7 @@
 - name: Deploy nodejs app
   hosts: centos
   become: True
-  become_user: "{{name-user}}"
+  become_user: "{{name_user}}"
   vars_files:
     - install-vars
   tasks:
@@ -49,7 +49,7 @@
 #        remote_src: yes
     - name: unpack the nodejs tar file
       unarchive:
-        src: "{{app-file-location}}"
+        src: "{{app_file_location}}"
         dest: "{{destination}}"
       register: user_creation_result
     - debug: msg={{user_creation_result.uid}}
