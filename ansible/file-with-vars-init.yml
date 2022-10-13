@@ -28,6 +28,11 @@
   hosts: centos
   become: True
   become_user: sand
+  vars:
+    - app-file-location: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
+    - location: /home/centos
+    - version: 1.0.0
+    - destination: /home/sand
   tasks:
 #    - name: copy nodejs folder tp a server
 #      copy:
@@ -45,16 +50,18 @@
 #        remote_src: yes
     - name: unpack the nodejs tar file
       unarchive:
-        src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
-        dest: /home/sand/
+#        src: /home/centos/simple-nodejs-master/nodejs-app-{{version}}.tgz
+#        src: "{{app-file-location}}"
+        src: "{{location}}/nodejs-app-{{version}}.tgz"
+        dest: "{{destination}}"
       register: user_creation_result
-    - debug: msg={{user_creation_result}}
+    - debug: msg={{user_creation_result.uid}}
     - name: install dependencies
       npm:
-        path: /home/sand/package
+        path: "{{destination}}"/package
     - name: start the application
       command:
-        chdir: /home/sand/package/app
+        chdir: "{{destination}}/package/app"
         cmd: node server
       async: 1000
       poll: 0

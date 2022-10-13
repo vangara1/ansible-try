@@ -1,0 +1,55 @@
+---
+- name: install node & npm
+  hosts: centos
+  become: yes
+  tasks:
+    - name: update yum repo & cache
+      yum: update_cache=yes
+    - name: installation node & npm
+      yum:
+        pkg:
+          - nodejs
+          - npm
+
+- name: create new user for node app
+  hosts: centos
+  become: yes
+  tasks:
+    - name: create the user
+      user:
+        name: sand
+        comment: sand admin
+#        group: centos
+      register: user_creation_result
+    - debug: msg={{user_creation_result.uid}}
+
+
+- name: Deploy nodejs app
+  hosts: centos
+  become: True
+  become_user: sand
+  tasks:
+    - name: create the package
+      file:
+        name: package
+        path: /home/sand/
+        state: directory
+    - name: unpack the nodejs tar file
+      unarchive:
+        src: /home/centos/simple-nodejs-master/nodejs-app-1.0.0.tgz
+        dest: /home/sand/
+      register: user_creation_result
+    - debug: msg={{user_creation_result.uid}}
+    - name: install dependencies
+      npm:
+         path: /home/sand/package
+    - name: start the application
+      command:
+        chdir: /home/sand/package/app
+        cmd: node server
+      async: 1000
+      poll: 0
+    - name: ensure app is running
+      shell: ps aux | grep node
+      register: app_status
+    - debug: msg={{app_status.stdout_lines}}
