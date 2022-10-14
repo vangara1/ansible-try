@@ -19,7 +19,7 @@
       register: download_result
 #    - debug: msg={{download_result}}
 
-    - name: untar necus installation file
+    - name: un-tar nexus installation file
       unarchive:
         src: "{{download_result.dest}}"
         dest: /opt/
