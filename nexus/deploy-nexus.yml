@@ -30,7 +30,7 @@
     - name: find the nexus
       find:
         paths: /opt
-        patterns: "*.gz"
+        patterns: "nexus-*"
         file_type: directory
       register: find_result
     - debug:
