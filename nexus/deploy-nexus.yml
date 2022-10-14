@@ -27,11 +27,11 @@
 #    - name: rename the nexus folder
 #      shell: mv
 
-#    - name: find the nexus
-#      find:
-#        paths: /opt
-#        patterns: "nexus-*"
-#        file_type: directory
-#      register: find_result
-#    - debug:
-#        msg: "{{find_result}}"
+    - name: find the nexus
+      find:
+        paths: /opt
+        patterns: "*.gz"
+        file_type: directory
+      register: find_result
+    - debug:
+        msg: "{{find_result}}"
