@@ -63,9 +63,9 @@
         group: nexus
         recurse: yes
     - name: sonatype-work folder owner
-          file:
-            path: /opt/sonatype-work
-            state: directory
-            owner: nexus
-            group: nexus
-            recurse: yes
+      file:
+        path: /opt/sonatype-work
+        state: directory
+        owner: nexus
+        group: nexus
+        recurse: yes
