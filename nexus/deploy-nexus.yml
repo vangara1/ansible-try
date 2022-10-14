@@ -17,15 +17,13 @@
         url: https://download.sonatype.com/nexus/3/latest-unix.tar.gz
         dest: /opt/
       register: download_result
-    - debug: msg={{download_result}}
+#    - debug: msg={{download_result}}
 
     - name: un-tar nexus installation file
       unarchive:
         src: "{{download_result.dest}}"
         dest: /opt/
         remote_src: yes
-#    - name: rename the nexus folder
-#      shell: mv
 
     - name: find the nexus
       find:
@@ -35,3 +33,5 @@
       register: find_result
     - debug:
         msg: "{{find_result}}"
+    - name: rename the nexus folder
+        shell: mv {{find_result.files[0]}}
