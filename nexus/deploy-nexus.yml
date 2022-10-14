@@ -14,5 +14,5 @@
   tasks:
     - name: download the nexus
       get_url:
-        url:  wget https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+        url: https://download.sonatype.com/nexus/3/latest-unix.tar.gz
         dest: /opt/
