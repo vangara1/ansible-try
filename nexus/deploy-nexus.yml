@@ -18,6 +18,7 @@
         dest: /opt/
       register: download_result
 #    - debug: msg={{download_result}}
+
     - name: untar necus installation file
       unarchive:
         src: "{{download_result.dest}}"
@@ -25,10 +26,11 @@
         remote_src: yes
 #    - name: rename the nexus folder
 #      shell:
+
     - name: find the nexus
-      ansible.builtin.find:
-        paths: /opt/
-        pathern: ['nexus-*']
+      find:
+        paths: /opt
+        patherns: ["nexus-*"]
 #        file_type: directory
 #      register: find_result
 #    - debug: msg={{find_result}}
