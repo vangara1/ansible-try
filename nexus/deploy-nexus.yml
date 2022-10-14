@@ -31,6 +31,6 @@
       find:
         paths: /opt
         patherns: 'nexus-*'
-#        file_type: directory
+        file_type: directory
 #      register: find_result
 #    - debug: msg={{find_result}}
