@@ -87,6 +87,9 @@
       shell: ps aux | grep nexus
       register: app_status
     - debug: msg={{app_status.stdout_lines}}
+    - name: wait for 1 minute
+      pause:
+        minutes: 1
     - name: check with netstat
       shell: netstat -plnt
       register: app_status
