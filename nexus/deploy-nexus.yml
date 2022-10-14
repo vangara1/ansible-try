@@ -1,6 +1,7 @@
 ---
 - name: install java and net-tools
   hosts: nexus_centos
+  become: yes
   tasks:
     - name: update the system
       yum: update_cache=yes
@@ -9,6 +10,7 @@
 
 - name: download & unpack the nexus installer
   hosts: nexus_centos
+  become: yes
   tasks:
     - name: download the nexus
       get_url:
