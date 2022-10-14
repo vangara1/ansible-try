@@ -27,7 +27,7 @@
 #      shell:
     - name: find the nexus
       ansible.builtin.find:
-#        paths: /opt/
+        paths: /opt/
 #        patherns: "nexus"
 #        file_type: directory
 #      register: find_result
