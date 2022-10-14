@@ -31,6 +31,7 @@
       find:
         paths: /opt
         pathern: "nexus-*"
+        use_regex: yes
         file_type: directory
       register: find_result
     - debug: msg={{find_result}}
