@@ -25,10 +25,10 @@
         remote_src: yes
 #    - name: rename the nexus folder
 #      shell:
-      - name: find the nexus
+    - name: find the nexus
         find:
           paths: /opt/
           pathern: "nexus-*"
           file_type: directory
-        register: find_module
-      - debug: "{{find_module}}"
+       register: find_module
+     - debug: "{{find_module}}"
