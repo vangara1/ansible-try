@@ -43,3 +43,22 @@
     - name: rename the nexus folder
       shell: mv {{find_result.files[0].path}} /opt/nexus
       when: not stat_result.stat.exists
+
+- name: create nexus user and change the owner
+  hosts: nexus_centos
+  tasks:
+    - name: Ensure group nexus exists
+      group:
+        name: nexus
+        state: present
+    - name: create nexus user
+      user:
+        name: nexus
+        group: nexus
+    - name: nexus folder owner
+      file:
+        path: /opt/nexus
+        state: directory
+        owner: nexus
+        group: nexus
+        recursive: yes
