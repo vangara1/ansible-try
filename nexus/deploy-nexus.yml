@@ -31,4 +31,4 @@
         pathern: "nexus-*"
         file_type: directory
       register: find_module
-    - debug: "{{find_module}}"
+    - debug: msg={{find_module}}
