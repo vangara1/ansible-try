@@ -1,0 +1,16 @@
+---
+- name: install java and net-tools
+  hosts: nexus_centos
+  tasks:
+    - name: update the system
+      yum: update_cache=yes
+    - name: install the java jdk
+      yum: name=java-1.8.0-openjdk-devel
+
+- name: download & unpack the nexus installer
+  hosts: nexus_centos
+  tasks:
+    - name: download the nexus
+      get_url:
+        url:  wget https://download.sonatype.com/nexus/3/latest-unix.tar.gz
+        dest: /opt/
