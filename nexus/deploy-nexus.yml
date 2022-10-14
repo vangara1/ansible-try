@@ -30,5 +30,5 @@
         paths: /opt/
         pathern: "nexus-*"
         file_type: directory
-       register: find_module
-     - debug: "{{find_module}}"
+      register: find_module
+    - debug: "{{find_module}}"
