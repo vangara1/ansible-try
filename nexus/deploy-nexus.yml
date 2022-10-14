@@ -46,15 +46,18 @@
 
 - name: create nexus user and change the owner
   hosts: nexus_centos
+  become: yes
   tasks:
     - name: Ensure group nexus exists
       group:
         name: nexus
         state: present
+
     - name: create nexus user
       user:
         name: nexus
         group: nexus
+
     - name: nexus folder owner
       file:
         path: /opt/nexus
@@ -62,6 +65,7 @@
         owner: nexus
         group: nexus
         recurse: yes
+
     - name: sonatype-work folder owner
       file:
         path: /opt/sonatype-work
