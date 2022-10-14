@@ -27,7 +27,7 @@
 #      shell:
     - name: find the nexus
       find:
-        paths: /opt/
+        paths: /opt
         pathern: "nexus-*"
         file_type: directory
       register: find_result
