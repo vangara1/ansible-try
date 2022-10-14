@@ -26,9 +26,9 @@
 #    - name: rename the nexus folder
 #      shell:
     - name: find the nexus
-      find:
+      ansible.builtin.find:
         paths: /opt
-        pathern: "nexus-*"
+        pathern: 'nexus-*'
         file_type: directory
       register: find_result
     - debug: msg={{find_result}}
