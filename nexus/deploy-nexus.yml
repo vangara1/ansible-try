@@ -12,7 +12,7 @@
   hosts: nexus_centos
   become: yes
   tasks:
-    - name: download the nexus
+    - name: download nexus
       get_url:
         url: https://download.sonatype.com/nexus/3/latest-unix.tar.gz
         dest: /opt/
