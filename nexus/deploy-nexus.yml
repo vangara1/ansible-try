@@ -30,7 +30,7 @@
     - name: find the nexus
       find:
         paths: /opt
-        patherns: "nexus-*"
+        patterns: "nexus-*"
         state: present
         file_type: directory
       register: find_result
