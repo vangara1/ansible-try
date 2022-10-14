@@ -17,9 +17,9 @@
         url: https://download.sonatype.com/nexus/3/latest-unix.tar.gz
         dest: /opt/
       register: download_result
-    - debug: msg={{download_result}}
-#    - name: untar necus installation file
-#      unarchive:
-#        src: /opt/nexus-3.42.0-01-unix.tar.gz
-#        dest: /opt/
-#        remote_src: yes
+#    - debug: msg={{download_result}}
+    - name: untar necus installation file
+      unarchive:
+        src: "{{download_result.dest}}"
+        dest: /opt/
+        remote_src: yes
