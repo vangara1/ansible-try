@@ -73,3 +73,13 @@
         owner: nexus
         group: nexus
         recurse: yes
+
+- name: nexus with nexus user
+  hosts: nexus_centos
+  become: yes
+  tasks:
+    - name: set run_as_user nexus
+      blockinfile:
+        path: /opt/nexus/bin/nexus.rc
+        block: |
+          run_as_user="nexus"
