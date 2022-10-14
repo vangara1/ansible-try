@@ -34,5 +34,12 @@
 #    - debug:
 #        msg: "{{find_result}}"
 
+    - name: check if nexus folder already exits
+      stats:
+        path: /opt/nexus
+      register: stat_result
+    - debug: msg={{stat_result}}
+
     - name: rename the nexus folder
       shell: mv {{find_result.files[0].path}} /opt/nexus
+
