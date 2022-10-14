@@ -12,11 +12,6 @@
   hosts: nexus_centos
   become: yes
   tasks:
-    - name: check if nexus folder already exists
-      stat:
-        path: /opt/nexus
-        register: stat_result
-    #    - debug: msg={{stat_result.stat.exists}}
     - name: download the nexus
       get_url:
         url: https://download.sonatype.com/nexus/3/latest-unix.tar.gz
@@ -36,7 +31,11 @@
       register: find_result
 #    - debug:
 #        msg: "{{find_result}}"
-
+    - name: check if nexus folder already exists
+      stat:
+        path: /opt/nexus
+      register: stat_result
+#    - debug: msg={{stat_result.stat.exists}}
     - name: rename the nexus folder
       shell: mv {{find_result.files[0].path}} /opt/nexus
       when: not stat_result.stat.exists
