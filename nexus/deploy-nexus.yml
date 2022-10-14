@@ -41,4 +41,4 @@
         state: directory
 
     - name: rename the nexus folder
-      shell: mv {{find_result.files.path}} /opt/nexus
+      shell: mv {{find_result.files[0]}} /opt/nexus
