@@ -35,7 +35,7 @@
 #        msg: "{{find_result}}"
 
     - name: check if nexus folder already exits
-      stats:
+      stat:
         path: /opt/nexus
       register: stat_result
     - debug: msg={{stat_result}}
