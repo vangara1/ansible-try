@@ -9,9 +9,6 @@
     - name: Install docker
       yum:
         pkg:
-          - yum-utils
-          - yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
-          - docker-ce docker-ce-cli containerd.io docker-compose-plugin
-
+          - docker
         update_cache: yes
         state: present
