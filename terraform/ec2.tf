@@ -16,14 +16,14 @@ module "ec2_instance" {
   tags = {
     name = "${var.NAME}-ec2"
   }
-  user_data = <<EOF
-        #!/bin/bash
-        yum update -y && yum install -y docker-ce
-        systemctl start docker
-        systemctl enable docker
-        usermod -aG docker centos
-        docker run -p 8080:8080 nginx
-  EOF
+#  user_data = <<EOF
+#        #!/bin/bash
+#        yum update -y && yum install -y docker-ce
+#        systemctl start docker
+#        systemctl enable docker
+#        usermod -aG docker centos
+#        docker run -p 8080:8080 nginx
+#  EOF
 }
 
 
