@@ -1,6 +1,6 @@
 ---
     - name: install docker
-      hosts: docker
+      hosts: centos
       become: yes
       tasks:
         - name: Add repository into repo.d list
