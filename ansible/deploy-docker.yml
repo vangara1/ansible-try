@@ -6,14 +6,11 @@
 #    - name: Docker repo download
 #      ansible.builtin.uri:
 #        url:
-    - name: Docker repo download
-          shell: yum-config-manager \
-                     --add-repo \
-                     https://download.docker.com/linux/centos/docker-ce.repo
     - name: Install docker
       yum:
         pkg:
           - yum-utils
+          - yum-config-manager --add-repo https://download.docker.com/linux/centos/docker-ce.repo
           - docker-ce docker-ce-cli containerd.io docker-compose-plugin
 
         update_cache: yes
