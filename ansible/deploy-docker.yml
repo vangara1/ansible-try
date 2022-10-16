@@ -5,6 +5,8 @@
   tasks:
     - name: Install docker
       yum:
-        name: docker
+        pkg:
+          - yum-utils
+          - docker-ce
         update_cache: yes
         state: present
