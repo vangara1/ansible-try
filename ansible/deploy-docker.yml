@@ -1,27 +1,36 @@
 ---
-    - name: install docker
-      hosts: centos
-      become: yes
-      tasks:
-        - name: Add repository into repo.d list
-          ansible.builtin.yum_repository:
-            name: docker
-            description: docker repository
-            baseurl: "https://download.docker.com/linux/centos/docker-ce.repo"
-            enabled: true
-            gpgcheck: true
-            gpgkey: "https://download.docker.com/linux/centos/gpg"
+      - name: install docker
+        hosts: docker
+        tasks:
+          - name: Install yum utils
+            yum:
+              name: yum-utils
+              state: latest
 
-        - name: Install Docker
-          ansible.builtin.yum:
-            name:
-              - docker-ce
-              - docker-ce-cli
-              - containerd.io
-            state: latest
-            update_cache: true
-  #        - name: Start Docker
-  #          ansible.builtin.service:
-  #            name: "docker"
-  #            enabled: true
-  #            state: started
+          - name: Add Docker repo
+            get_url:
+              url: https://download.docker.com/linux/centos/docker-ce.repo
+              dest: /etc/yum.repos.d/docer-ce.repo
+            become: yes
+
+          - name: Enable Docker Edge repo
+            ini_file:
+              dest: /etc/yum.repos.d/docer-ce.repo
+              section: 'docker-ce-edge'
+              option: enabled
+              value: 0
+            become: yes
+
+          - name: Enable Docker Test repo
+            ini_file:
+              dest: /etc/yum.repos.d/docer-ce.repo
+              section: 'docker-ce-test'
+              option: enabled
+              value: 0
+            become: yes
+
+          - name: Install Docker
+            package:
+              name: docker-ce
+              state: latest
+            become: yes
