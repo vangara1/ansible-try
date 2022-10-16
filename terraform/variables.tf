@@ -1,9 +1,8 @@
-key_name      = "user1"
-instance_type = "t2.medium"
-name          = "ansible"
-CIDR          = "170.0.0.0/16"
-AZ            = ["us-east-1a"]
-SUBNET        = ["170.0.0.0/19"]
-spot_type     = "persistent"
-spot_behavior = "stop"
-ami           = "ami-002070d43b0a4f171"
+variable "NAME" {}
+variable "CIDR" {}
+variable "AZ" {}
+variable "SUBNET" {}
+variable "spot_type" {}
+variable "spot_behavior" {}
+variable "ami" {}
+variable "instance_type" {}
