@@ -3,10 +3,26 @@
   hosts: docker
   become: yes
   tasks:
-#    - name: Docker repo download
-#      ansible.builtin.uri:
-#        url:
-    - name: Install docker
-      ansible.builtin.yum:
-          name: httpd>=2.4
-          state: present
+    - name: Add repository into repo.d list
+          ansible.builtin.yum_repository:
+            name: docker
+            description: docker repository
+            baseurl:  "https://download.docker.com/linux/centos/docker-ce.repo"
+            enabled: true
+            gpgcheck: true
+
+        - name: Install Docker
+          ansible.builtin.yum:
+            name:
+              - docker-ce
+              - docker-ce-cli
+              - containerd.io
+              - docker-compose-plugin
+            state: latest
+            update_cache: true
+
+#        - name: Start Docker
+#          ansible.builtin.service:
+#            name: "docker"
+#            enabled: true
+#            state: started
