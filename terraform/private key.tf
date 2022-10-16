@@ -14,6 +14,7 @@ module "key_pair" {
 resource "null_resource" "key-wave" {
   provisioner "local-exec" {
     command = <<-EOT
+      sudo  rm -rf ./'${var.NAME}'.pem
       sudo echo '${tls_private_key.wave-key.private_key_pem}' > ./'${var.NAME}'.pem
       sudo chmod 400 ./'${var.NAME}'.pem
     EOT
