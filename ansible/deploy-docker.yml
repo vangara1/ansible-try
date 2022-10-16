@@ -7,7 +7,6 @@
 #      ansible.builtin.uri:
 #        url:
     - name: Install docker
-      yum:
-        name: docker
-        update_cache: yes
-        state: present
+      ansible.builtin.yum:
+          name: docker
+          state: present
