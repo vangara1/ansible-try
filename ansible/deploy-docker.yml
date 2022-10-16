@@ -8,5 +8,5 @@
 #        url:
     - name: Install docker
       ansible.builtin.yum:
-          name: docker
+          name: httpd>=2.4
           state: present
