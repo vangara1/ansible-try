@@ -1,0 +1,115 @@
+sudo cat <<EOF | sudo tee /etc/yum.repos.d/kubernetes.repo
+    2  [kubernetes]
+    3  name=Kubernetes
+    4  baseurl=https://packages.cloud.google.com/yum/repos/kubernetes-el7-\$basearch
+    5  enabled=1
+    6  gpgcheck=1
+    7  repo_gpgcheck=0
+    8  gpgkey=https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+    9  EOF
+   10  sudo yum -y install vim git curl wget kubelet kubeadm kubectl
+   11  sudo systemctl enable kubelet
+   12  kubeadm version
+   13  sudo kubeadm init
+   14  sudo rm /etc/containerd/config.toml
+   15  sudo systemctl restart containerd
+   16  sudo systemctl restart docker
+   17  sudo kubeadm init
+   18   mkdir -p $HOME/.kube
+   19    sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+   20    sudo chown $(id -u):$(id -g) $HOME/.kube/config
+   21  sudo kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+   22  kubectl get nodes
+   23  sudo tee -a /etc/yum.repos.d/google-cloud-sdk.repo << EOM
+   24  [google-cloud-cli]
+   25  name=Google Cloud CLI
+   26  baseurl=https://packages.cloud.google.com/yum/repos/cloud-sdk-el8-x86_64
+   27  enabled=1
+   28  gpgcheck=1
+   29  repo_gpgcheck=0
+   30  gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+   31  EOM
+   32  sudo yum install libxcrypt-compat.x86_64 -y
+   33  sudo yum install google-cloud-cli -y
+   34  sudo yum install google-cloud-cli-app-engine-java -y
+   35  gcloud init
+   36  kubectl get nodes
+   37  gcloud container clusters get-credentials cluster-1 --zone us-central1-c --project digital-layout-362007
+   38  kubectl config get-contexts
+   39  wgat url name (https://github.com/prometheus/pushgateway/releases/download/v1.4.3/pushgateway-1.4.3.linux-amd64.tar.gz)
+   40  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   41  ll
+   42  ls -a
+   43  ll
+   44  pwd
+   45  cd ../..
+   46  ll
+   47  mv helm-v3.10.1-linux-386.tar.gz /$HOME
+   48  ll
+   49  cd root
+   50  ll
+   51  untar helm-v3.10.1-linux-386.tar.gz
+   52  unzip helm-v3.10.1-linux-386.tar.gz
+   53  suod yum install untar
+   54  gunzip helm-v3.10.1-linux-386.tar.gz
+   55  ll
+   56  sudo yum install gunzip
+   57  sudo yum install unzip
+   58  ll
+   59  gunzip helm-v3.10.1-linux-386.tar
+   60  gzip -d helm-v3.10.1-linux-386.tar
+   61  tar -xf helm-v3.10.1-linux-386.tar
+   62  ll
+   63  mv linux-amd64/helm /usr/local/bin/helm
+   64  rm -rf helm-v3.10.1-linux-386.tar  linux-386/
+   65  ll
+   66  tar -xf helm-v3.10.1-linux-arm64.tar.gz
+   67  mv linux-amd64/helm /usr/local/bin/helm
+   68  ll
+   69  mv /linux-amd64/helm /usr/local/bin/helm
+   70  cd linux-arm64/
+   71  ll
+   72  cd helm
+   73  mv helm /usr/local/bin/helm
+   74  ll
+   75  cd ..
+   76  curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+   77   chmod 700 get_helm.sh
+   78  ./get_helm.sh
+   79  helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+   80  ll
+   81  kubectl get ns
+   82  kubectl create ns monitor
+   83  kubectl get ns
+   84  helm install kube-prometheus-stack prometheus-community/kube-prometheus-stack --namespace monitor
+   85  kubectl get pod -n monitor
+   86  kubectl pod describe kube-prometheus-stack-grafana-5d694bf7c-gqjgb
+   87  kubectl describe pod kube-prometheus-stack-grafana-5d694bf7c-gqjgb
+   88  kubectl get pod -n monitor
+   89  kubectl descirbe pod kube-prometheus-stack-grafana-5d694bf7c-gqjgb -n monitor
+   90  kubectl describe pod kube-prometheus-stack-grafana-5d694bf7c-gqjgb -n monitor
+   91  kubectl get all -n monitor
+   92  helm version
+   93  helm repo list
+   94  helm repo update
+   95  kubectl get svc -n monitor
+   96  kubeclt edit svc kube-prometheus-stack-grafana -n monitor
+   97  kubectl edit svc kube-prometheus-stack-grafana -n monitor
+   98  kubectl get svc -n monitor
+   99  kubectl get secret -n mohnitor
+  100  kubectl get secret -n monitor
+  101  kubectl get secret kube-prometheus-stack-grafana -n monitor -o yaml
+  102  echo "cHJvbS1vcGVyYXRvcg==" |base64 -d
+  103  echo "YWRtaW4=" |base64 -d
+  104  vi nginx.yml
+  105  kubectl apply -f nginx.yml
+  106  kubectl get deployment -n monitor
+  107  kubectl get deployment nginx-deployment -n monitor
+  108  kubectl get pod -n monitor
+  109  kubectl get svc
+  110  kubectl get svc -n monitor
+  111  kubectl edit svc kube-prometheus-stack-prometheus -n monitor
+  112  kubectl get svc -n monitor
+
+
+
