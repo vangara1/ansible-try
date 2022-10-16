@@ -4,7 +4,7 @@ AZ            = ["us-east-1a"]
 SUBNET        = ["170.0.0.0/19"]
 spot_type     = "persistent"
 spot_behavior = "stop"
-ami           = "ami-0a3a278d025067ab7"
+ami           = "ami-002070d43b0a4f171"
 instance_type = "t2.medium"
 
 
