@@ -1,4 +1,4 @@
-NAME          = "Cycle"
+NAME          = "must"
 CIDR          = "170.0.0.0/16"
 AZ            = ["us-east-1a"]
 SUBNET        = ["170.0.0.0/19"]
