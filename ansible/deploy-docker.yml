@@ -8,7 +8,6 @@
 #        url:
     - name: Install docker
       yum:
-        pkg:
-          - docker
+        name: docker
         update_cache: yes
-        state: installed
+        state: present
