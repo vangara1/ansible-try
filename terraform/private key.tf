@@ -10,7 +10,6 @@ module "key_pair" {
 }
 
 
-
 resource "null_resource" "key-wave" {
   provisioner "local-exec" {
     command = <<-EOT
