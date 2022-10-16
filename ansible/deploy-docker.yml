@@ -11,4 +11,4 @@
         pkg:
           - docker
         update_cache: yes
-        state: present
+        state: installed
