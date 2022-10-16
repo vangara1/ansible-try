@@ -2,10 +2,10 @@
       - name: install docker
         hosts: docker
         tasks:
-          - name: Install yum utils
-            yum:
-              name: yum-utils
-              state: latest
+#          - name: Install yum utils
+#            yum:
+#              name: yum-utils
+#              state: latest
 
           - name: Add Docker repo
             get_url:
