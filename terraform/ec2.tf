@@ -22,7 +22,7 @@ provider "aws" {
 resource "aws_instance" "instance" {
   ami                         = var.ami
   instance_type               = var.instance
-  key_name                    = module.key_pair.key_name
+  key_name                    = var.name
   vpc_security_group_ids      = [aws_security_group.security.id]
   subnet_id                   = aws_subnet.subnet.id
   associate_public_ip_address = true
