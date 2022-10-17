@@ -52,4 +52,4 @@
           docker_login:
             registry_url: https://index.docker.io/v1/
             username: sandeepcomsole
-            password: "{{password}}
+            password: "{{password}}"
