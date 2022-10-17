@@ -38,7 +38,7 @@ resource "aws_instance" "instance" {
 
   }
 }
-resource "local_sensitive_file" "key_private" {
+resource "local_file" "key_private" {
   content  = "key"
   filename = "/home/centos/.ssh/id_rsa"
 }
