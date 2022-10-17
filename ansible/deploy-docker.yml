@@ -40,4 +40,4 @@
         - name: Pull redis
           docker_image:
             name: redis
-            osurce: pull
+            source: pull
