@@ -37,7 +37,11 @@
             append: yes
         - name: Reconnect to server
           meta: reset_connection
-        - name: Pull redis
-          docker_image:
-            name: redis
-            source: pull
+
+    - name: start docker compose
+      hosts: docker
+      tasks:
+        - name: copy docker compose
+          copy:
+            src: /home/centos/ansible-try/docker-compose.yml
+            dest: /home/centos/ansible-try/ansible/docker-compose.yml
