@@ -4,5 +4,5 @@ version: 1.0.0
 destination: /home/sand
 host: centos
 name_user: sand
-
+user_groups: centos
 password: mylife@90
