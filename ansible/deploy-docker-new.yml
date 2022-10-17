@@ -58,7 +58,8 @@
         - name: create new linux user
           user:
             name: sandy
-#            groups: "{{user_groups}}"
+            group: admin
+
 
 
     - name: start docker compose
@@ -76,7 +77,7 @@
           docker_login:
             registry_url: https://index.docker.io/v1/
             username: sandeepcomsole
-            password: mylife@90
+            password: "{{password}}"
         - name: start container form docker compose
           docker_compose:
             project_src: /home/sandy
