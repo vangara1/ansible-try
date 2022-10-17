@@ -14,5 +14,5 @@
         - name: Install Docker
           package:
             name: docker-ce
-            state: present
+            state: latest
 
