@@ -58,7 +58,7 @@
         - name: create new linux user
           user:
             name: sandy
-            group: admin
+            group: root
 
 
 
