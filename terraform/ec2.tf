@@ -34,11 +34,8 @@ resource "aws_instance" "instance" {
   provisioner "local-exec" {
 
     working_dir = "/home/centos/ansible-try/ansible"
-    command = <<-EOT
-    "ansible-playbook --inventory ${self.public_ip}"
-    ssh-copy-id centos@${self.public_ip}
-    "ansible-playbook --user centos deploy-docker-new.yml"
-     EOT
+    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${var.ssh_key_private} --user centos deploy-docker-new.yml"
+
   }
 }
 
@@ -80,13 +77,7 @@ resource "aws_security_group" "security" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-  ingress {
-    description = "TLS from VPC"
-    from_port   = 22
-    to_port     = 22
-    protocol    = "TCP"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
+
 
 
   egress {
@@ -141,6 +132,7 @@ resource "tls_private_key" "wave-key" {
 
 module "key_pair" {
   source = "terraform-aws-modules/key-pair/aws"
+
   key_name = var.name
   public_key = trimspace(tls_private_key.wave-key.public_key_openssh)
 }
@@ -163,6 +155,6 @@ variable "az" {}
 variable "name" {}
 variable "ami" {}
 variable "instance" {}
-#variable "ssh_key_private" {}
+variable "ssh_key_private" {}
 
 
