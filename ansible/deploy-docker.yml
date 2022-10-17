@@ -40,13 +40,12 @@
 
     - name: start docker compose
       hosts: docker
-      become: yes
       vars_files:
         - install-vars
       tasks:
         - name: copy docker compose
           copy:
-            src: /home/centos/ansible-try/docker-compose.yml
+            src: /home/centos/ansible-try/ansible/docker-compose.yml
             dest: /home/centos/docker-compose.yml
         - name: docker login
           docker_login:
