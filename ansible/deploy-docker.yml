@@ -44,4 +44,4 @@
         - name: copy docker compose
           copy:
             src: /home/centos/ansible-try/docker-compose.yml
-            dest: /ansible/docker-compose.yml
+            dest: ./docker-compose.yml
