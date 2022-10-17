@@ -18,6 +18,9 @@
               - docker-ce
             update_cache: yes
             state: present
+        - name: Install docker python module
+          pip:
+            name: docker
         - name: Install docker compose
           get_url:
             url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-{{lookup('pipe', 'uname -m')}}
@@ -35,4 +38,6 @@
         - name: Reconnect to server
           meta: reset_connection
         - name: Pull redis
-          command: docker pull redis
+          docker_image:
+            name: redis
+            osurce: pull
