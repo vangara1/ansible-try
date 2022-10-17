@@ -1,13 +1,9 @@
-version: latest
-services:
-  web:
-    build: .
-    ports:
-      - "8080:8080"
-    volumes:
-      - .:/code
-      - logvolume01:/var/log
-  nginx-1:
-    image: sandeepcomsole/sandy:nginx-1
-volumes:
-  logvolume01: {}
+web:
+  image: sandeepcomsole/sandy:nginx-1
+  volumes:
+   - ./templates:/etc/nginx/templates
+  ports:
+   - "8080:80"
+  environment:
+   - NGINX_HOST=foobar.com
+   - NGINX_PORT=80
