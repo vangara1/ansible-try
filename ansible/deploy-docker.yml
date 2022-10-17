@@ -46,6 +46,8 @@
             name: centos
             groups: docker
             append: yes
+        - name: Reconnect to server
+          meta: reset_connection
     - name: Test docker pull
       hosts: docker
       tasks:
