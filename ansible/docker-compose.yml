@@ -1,15 +1,13 @@
-version: "3.9"  # optional since v1.27.0
+version: "1.23.1"  # optional since v1.27.0
 services:
   web:
     build: .
     ports:
-      - "8000:5000"
+      - "8080:8080"
     volumes:
       - .:/code
       - logvolume01:/var/log
-    depends_on:
-      - redis
   java-test:
-    image: sandeepcomsole/my-app:java-test
+    image: sandeepcomsole/sandy:nginx-1
 volumes:
   logvolume01: {}
