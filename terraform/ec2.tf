@@ -30,6 +30,12 @@ resource "aws_instance" "instance" {
   tags = {
     Name = "${var.name}-instance"
   }
+
+  provisioner "local-exec" {
+    working_dir = "/home/centos/ansible-try/ansible"
+    command = "ansible-playbook --inventory ${self.public_ip}, --private-key ${var.ssh_key_private} --user centos deploy-docker-new.yml"
+
+  }
 }
 
 resource "aws_internet_gateway" "igw" {
@@ -67,9 +73,10 @@ resource "aws_security_group" "security" {
     description = "TLS from VPC"
     from_port   = 0
     to_port     = 0
-    protocol    = "tcp"
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
+
 
 
   egress {
@@ -147,5 +154,6 @@ variable "az" {}
 variable "name" {}
 variable "ami" {}
 variable "instance" {}
+variable "ssh_key_private" {}
 
 

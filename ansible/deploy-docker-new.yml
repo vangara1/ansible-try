@@ -1,6 +1,6 @@
 ---
     - name: Install python3
-      hosts: docker
+      hosts: all
       gather_facts: False
       become: yes
       tasks:
@@ -35,7 +35,7 @@
             state: started
 
     - name: create new linux user
-      hosts: docker
+      hosts: all
       become: yes
       tasks:
         - name: create new linux user
@@ -45,7 +45,7 @@
 
 
     - name: start docker compose
-      hosts: docker
+      hosts: all
       become: yes
       become_user: sandy
       vars_files:
