@@ -40,6 +40,7 @@
 
     - name: start docker compose
       hosts: docker
+      become: yes
       vars_files:
         - install-vars
       tasks:
