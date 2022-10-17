@@ -7,7 +7,7 @@ services:
     volumes:
       - .:/code
       - logvolume01:/var/log
-  java-test:
+  nginx-1:
     image: sandeepcomsole/sandy:nginx-1
 volumes:
   logvolume01: {}
