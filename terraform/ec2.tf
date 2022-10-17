@@ -34,12 +34,11 @@ resource "aws_instance" "instance" {
   provisioner "local-exec" {
 
     working_dir = "/home/centos/ansible-try/ansible"
-    command = "ansible-playbook --inventory ${self.public_ip}"
     command = <<-EOT
+    "ansible-playbook --inventory ${self.public_ip}"
     ssh-copy-id centos@${self.public_ip}
-  EOT
-    command = "ansible-playbook --user centos deploy-docker-new.yml"
-
+    "ansible-playbook --user centos deploy-docker-new.yml"
+     EOT
   }
 }
 
