@@ -58,7 +58,7 @@
         - name: create new linux user
           user:
             name: sandy
-            groups: "{{user_groups}}"
+#            groups: "{{user_groups}}"
 
 
     - name: start docker compose
