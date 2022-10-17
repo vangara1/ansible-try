@@ -58,8 +58,7 @@
         - name: create new linux user
           user:
             name: sandy
-            group: root
-
+            groups: centos
 
 
     - name: start docker compose
