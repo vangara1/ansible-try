@@ -28,4 +28,11 @@
             url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-{{lookup('pipe', 'uname -m')}}
             dest: /usr/local/bin/docker-compose
             mode: +x
-
+    - name: start docker
+      hosts: docker
+      become: yes
+      tasks:
+        - name: statr docker daemon
+          systemd:
+            name: docker
+            state: started
