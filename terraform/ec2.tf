@@ -22,7 +22,7 @@ provider "aws" {
 resource "aws_instance" "instance" {
   ami                         = var.ami
   instance_type               = var.instance
-  key_name                    = "terra"
+  key_name                    = module.key_pair.key_name
   vpc_security_group_ids      = [aws_security_group.security.id]
   subnet_id                   = aws_subnet.subnet.id
   associate_public_ip_address = true
@@ -115,6 +115,28 @@ resource "aws_vpc" "sandy" {
   instance_tenancy = "default"
   tags                 = {
     Name = "${var.name}-sandy"
+  }
+}
+
+resource "tls_private_key" "wave-key" {
+  algorithm = "RSA"
+}
+
+module "key_pair" {
+  source = "terraform-aws-modules/key-pair/aws"
+
+  key_name = var.name
+  public_key = trimspace(tls_private_key.wave-key.public_key_openssh)
+}
+
+
+
+resource "null_resource" "key-wave" {
+  provisioner "local-exec" {
+    command = <<-EOT
+      sudo echo '${tls_private_key.wave-key.private_key_pem}' > ./'${var.name}'.pem
+      sudo chmod 400 ./'${var.name}'.pem
+    EOT
   }
 }
 
