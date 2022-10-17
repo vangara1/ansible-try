@@ -5,8 +5,8 @@
       tasks:
         - name: Add Docker repo
             get_url:
-            url: https://download.docker.com/linux/centos/docker-ce.repo
-            dest: /etc/yum.repos.d/docer-ce.repo
+              url: https://download.docker.com/linux/centos/docker-ce.repo
+              dest: /etc/yum.repos.d/docer-ce.repo
         - name: Install python3 & docker
           vars:
             ansible_python_interpreter: /usr/bin/python
@@ -16,7 +16,7 @@
               - python3
               - docker-ce
             update_cache: yes
-            state: latest
+            state: present
 
 
 
