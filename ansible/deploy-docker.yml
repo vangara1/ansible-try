@@ -46,7 +46,7 @@
         - name: copy docker compose
           copy:
             src: /home/centos/ansible-try/docker-compose.yml
-            dest: ./docker-compose.yml
+            dest: /home/centos/ansible-try/ansible
         - name: docker login
           docker_login:
             registry_url: https://index.docker.io/v1/
