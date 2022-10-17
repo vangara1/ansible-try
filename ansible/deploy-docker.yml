@@ -19,7 +19,7 @@
             update_cache: yes
             state: present
 
-        - name: Install Docker-compose
+        - name: Install Docker compose
           hosts: docker
           tasks:
             - name: Install docker compose
