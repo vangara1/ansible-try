@@ -84,7 +84,7 @@ resource "aws_security_group" "security" {
     description = "TLS from VPC"
     from_port   = 22
     to_port     = 22
-    protocol    = TCP
+    protocol    = "TCP"
     cidr_blocks = ["0.0.0.0/0"]
   }
 
