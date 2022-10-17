@@ -34,9 +34,13 @@ resource "aws_instance" "instance" {
   provisioner "local-exec" {
 
     working_dir = "/home/centos/ansible-try/ansible"
-    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${var.ssh_key_private} --user centos deploy-docker-new.yml"
+    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${local_sensitive_file.ssh_key_private.content} --user centos deploy-docker-new.yml"
 
   }
+}
+resource "local_sensitive_file" "ssh_key_private" {
+  content  = "key"
+  filename = "/home/centos/.ssh/id_rsa"
 }
 
 resource "aws_internet_gateway" "igw" {
