@@ -34,7 +34,7 @@ resource "aws_instance" "instance" {
   provisioner "local-exec" {
 
     working_dir = "/home/centos/ansible-try/ansible"
-    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${var.ssh_key_private} --user centos deploy-docker-new.yml"
+    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${local_file.key_private.content} --user centos deploy-docker-new.yml"
 
   }
 }
@@ -159,6 +159,6 @@ variable "az" {}
 variable "name" {}
 variable "ami" {}
 variable "instance" {}
-variable "ssh_key_private" {}
+#variable "ssh_key_private" {}
 
 
