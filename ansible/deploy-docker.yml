@@ -19,10 +19,10 @@
             update_cache: yes
             state: present
         - name: Install docker compose
-            get_url:
-              url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-{{lookup('pipe', 'uname -m')}}
-              dest: /usr/local/bin/docker-compose
-              mode: +x
+          get_url:
+            url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-{{lookup('pipe', 'uname -m')}}
+            dest: /usr/local/bin/docker-compose
+            mode: +x
         - name: Ensure docker is running
           systemd:
             name: docker
