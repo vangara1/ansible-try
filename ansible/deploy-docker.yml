@@ -8,7 +8,7 @@
             url: https://download.docker.com/linux/centos/docker-ce.repo
             dest: /etc/yum.repos.d/docer-ce.repo
 
-        - name: Make sure python and docker are installed
+        - name: Install python3, dokcer and docker compose
           vars:
             ansible_python_interpreter: /usr/bin/python
           yum:
@@ -18,29 +18,15 @@
               - docker-ce
             update_cache: yes
             state: present
-
-    - name: Install docker compose
-      hosts: docker
-      become: yes
-      tasks:
         - name: Install docker compose
-          get_url:
-            url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-{{lookup('pipe', 'uname -m')}}
-            dest: /usr/local/bin/docker-compose
-            mode: +x
-    - name: start docker
-      hosts: docker
-      become: yes
-      tasks:
+            get_url:
+              url: https://github.com/docker/compose/releases/download/1.23.2/docker-compose-Linux-{{lookup('pipe', 'uname -m')}}
+              dest: /usr/local/bin/docker-compose
+              mode: +x
         - name: Ensure docker is running
           systemd:
             name: docker
             state: started
-
-    - name: Add centos to docker
-      hosts: docker
-      become: yes
-      tasks:
         - name: Add centos to docker
           user:
             name: centos
@@ -48,8 +34,5 @@
             append: yes
         - name: Reconnect to server
           meta: reset_connection
-    - name: Test docker pull
-      hosts: docker
-      tasks:
         - name: Pull redis
           command: docker pull redis
