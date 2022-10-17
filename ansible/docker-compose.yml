@@ -1,4 +1,4 @@
-version: "1.23.1"  # optional since v1.27.0
+version: latest
 services:
   web:
     build: .
