@@ -80,7 +80,13 @@ resource "aws_security_group" "security" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-
+  ingress {
+    description = "TLS from VPC"
+    from_port   = 22
+    to_port     = 22
+    protocol    = TCP
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 
 
   egress {
@@ -135,7 +141,6 @@ resource "tls_private_key" "wave-key" {
 
 module "key_pair" {
   source = "terraform-aws-modules/key-pair/aws"
-
   key_name = var.name
   public_key = trimspace(tls_private_key.wave-key.public_key_openssh)
 }
