@@ -40,9 +40,8 @@
 
     - name: start docker compose
       hosts: docker
-      vars_prompt:
-        - name: password
-          prompt: Enter password for docker registry
+      vars_files:
+        - install-vars
       tasks:
         - name: copy docker compose
           copy:
