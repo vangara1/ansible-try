@@ -9,7 +9,7 @@ services:
       - logvolume01:/var/log
     depends_on:
       - redis
-  redis:
-    image: redis
+  java-test:
+    image: sandeepcomsole/my-app:java-test
 volumes:
   logvolume01: {}
