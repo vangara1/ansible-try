@@ -21,6 +21,7 @@
 
     - name: Install docker compose
       hosts: docker
+      become: yes
       tasks:
         - name: Install docker compose
           get_url:
