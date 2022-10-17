@@ -36,3 +36,18 @@
           systemd:
             name: docker
             state: started
+
+    - name: Add centos to docker
+      hosts: docker
+      become: yes
+      tasks:
+        - name: Add centos to docker
+          user:
+            name: centos
+            groups: docker
+            append: yes
+    - name: Test docker pull
+      hosts: docker
+      tasks:
+        - name: Pull redis
+          command: docker pull redis
