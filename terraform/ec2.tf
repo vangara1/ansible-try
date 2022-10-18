@@ -160,6 +160,23 @@ resource "aws_key_pair" "ssh-key" {
 #  }
 #}
 
+#resource "null_resource" "example" {
+#  provisioner "remote-exec" {
+#    connection {
+#      host = aws_instance.instance.public_dns
+#      user = "centos"
+#      file = file("files/id_rsa")
+#    }
+#
+#    inline = ["echo 'connected!'"]
+#  }
+#
+#  provisioner "local-exec" {
+#    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -T 300 -i ${aws_instance.example.public_dns},  --user centos --private-key files/id_rsa playbook.yml"
+#    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${local_file.key_private.content} --user centos deploy-docker-new.yml"
+#
+#  }
+#}
 
 variable "vpc_id" {}
 variable "subnet_cidr" {}
