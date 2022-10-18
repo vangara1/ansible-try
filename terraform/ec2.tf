@@ -30,15 +30,19 @@ resource "aws_instance" "instance" {
   tags = {
     Name = "${var.name}-instance"
   }
+}
 
+resource "null_resource" "example" {
+  triggers = {
+    trigger = aws_instance.instance.public_ip
+  }
   provisioner "local-exec" {
 
     working_dir = "/home/centos/ansible-try/ansible"
-    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${var.ssh_key_private} --user centos deploy-docker-new.yml"
+    command = "ansible-playbook --inventory ${aws_instance.instance.public_ip}, --private-key ${var.ssh_key_private} --user centos deploy-docker-new.yml"
 
   }
 }
-
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.sandy.id
@@ -135,32 +139,8 @@ resource "aws_key_pair" "ssh-key" {
   public_key = file(var.ssh_key)
 }
 
-#resource "null_resource" "key-wave" {
-#  provisioner "local-exec" {
-#    command = <<-EOT
-#      sudo echo '${tls_private_key.wave-key.private_key_pem}' > ./'${var.name}'.pem
-#      sudo chmod 400 ./'${var.name}'.pem
-#    EOT
-#  }
-#}
 
-#resource "null_resource" "example" {
-#  provisioner "remote-exec" {
-#    connection {
-#      host = aws_instance.instance.public_dns
-#      user = "centos"
-#      file = file("files/id_rsa")
-#    }
-#
-#    inline = ["echo 'connected!'"]
-#  }
-#
-#  provisioner "local-exec" {
-#    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -T 300 -i ${aws_instance.example.public_dns},  --user centos --private-key files/id_rsa playbook.yml"
-#    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${local_file.key_private.content} --user centos deploy-docker-new.yml"
-#
-#  }
-#}
+
 
 variable "vpc_id" {}
 variable "subnet_cidr" {}
