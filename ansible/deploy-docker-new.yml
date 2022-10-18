@@ -51,14 +51,14 @@
             name: docker
             state: started
 
-    - name: create new linux user
-      hosts: localhost
-      become: yes
-      tasks:
-        - name: create new linux user
-          user:
-            name: sandy
-#            groups: "{{user_groups}}"
+#    - name: create new linux user
+#      hosts: localhost
+#      become: yes
+#      tasks:
+#        - name: create new linux user
+#          user:
+#            name: sandy
+##            groups: "{{user_groups}}"
 
 
     - name: start docker compose
