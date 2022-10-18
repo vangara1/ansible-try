@@ -26,7 +26,7 @@
             url: https://download.docker.com/linux/centos/docker-ce.repo
             dest: /etc/yum.repos.d/docer-ce.repo
 
-        - name: Install python3, dokcer and docker compose
+        - name: Install python3, docker and docker compose
           vars:
             ansible_python_interpreter: /usr/bin/python
           yum:
