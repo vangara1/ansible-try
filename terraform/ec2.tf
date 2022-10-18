@@ -31,17 +31,14 @@ resource "aws_instance" "instance" {
     Name = "${var.name}-instance"
   }
 
-#  provisioner "local-exec" {
-#
-#    working_dir = "/home/centos/ansible-try/ansible"
-#    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${local_file.key_private.content} --user centos deploy-docker-new.yml"
-#
-#  }
+  provisioner "local-exec" {
+
+    working_dir = "/home/centos/ansible-try/ansible"
+    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${var.ssh_key_private} --user centos deploy-docker-new.yml"
+
+  }
 }
-#resource "local_file" "key_private" {
-#  content  = "key"
-#  filename = "/home/centos/.ssh/id_rsa"
-#}
+
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.sandy.id
@@ -137,20 +134,7 @@ resource "aws_key_pair" "ssh-key" {
   key_name   = var.name
   public_key = file(var.ssh_key)
 }
-#
-#resource "tls_private_key" "wave-key" {
-#  algorithm = "RSA"
-#}
-#
-#module "key_pair" {
-#  source = "terraform-aws-modules/key-pair/aws"
-#
-#  key_name = var.name
-#  public_key = trimspace(tls_private_key.wave-key.public_key_openssh)
-#}
 
-#
-#
 #resource "null_resource" "key-wave" {
 #  provisioner "local-exec" {
 #    command = <<-EOT
@@ -184,5 +168,5 @@ variable "az" {}
 variable "name" {}
 variable "ami" {}
 variable "instance" {}
-#variable "ssh_key_private" {}
+variable "ssh_key_private" {}
 variable ssh_key {}
