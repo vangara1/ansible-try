@@ -134,7 +134,7 @@ output "ip-address"{
   value = aws_instance.instance.public_ip
 }
 resource "aws_key_pair" "ssh-key" {
-  key_name   = "myapp-key"
+  key_name   = "terra"
   public_key = file(var.ssh_key)
 }
 #
