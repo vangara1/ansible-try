@@ -22,7 +22,7 @@ provider "aws" {
 resource "aws_instance" "instance" {
   ami                         = var.ami
   instance_type               = var.instance
-  key_name                    = var.name
+  key_name                    = "terra"
   vpc_security_group_ids      = [aws_security_group.security.id]
   subnet_id                   = aws_subnet.subnet.id
   associate_public_ip_address = true
@@ -31,17 +31,17 @@ resource "aws_instance" "instance" {
     Name = "${var.name}-instance"
   }
 
-  provisioner "local-exec" {
-
-    working_dir = "/home/centos/ansible-try/ansible"
-    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${local_file.key_private.content} --user centos deploy-docker-new.yml"
-
-  }
+#  provisioner "local-exec" {
+#
+#    working_dir = "/home/centos/ansible-try/ansible"
+#    command = "ansible-playbook --inventory ${self.public_ip} --private-key ${local_file.key_private.content} --user centos deploy-docker-new.yml"
+#
+#  }
 }
-resource "local_file" "key_private" {
-  content  = "key"
-  filename = "/home/centos/.ssh/id_rsa"
-}
+#resource "local_file" "key_private" {
+#  content  = "key"
+#  filename = "/home/centos/.ssh/id_rsa"
+#}
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.sandy.id
@@ -130,27 +130,35 @@ resource "aws_vpc" "sandy" {
   }
 }
 
-resource "tls_private_key" "wave-key" {
-  algorithm = "RSA"
+output "ip-address"{
+  value = aws_instance.instance.public_ip
 }
-
-module "key_pair" {
-  source = "terraform-aws-modules/key-pair/aws"
-
-  key_name = var.name
-  public_key = trimspace(tls_private_key.wave-key.public_key_openssh)
+resource "aws_key_pair" "ssh-key" {
+  key_name   = "myapp-key"
+  public_key = file(var.ssh_key)
 }
+#
+#resource "tls_private_key" "wave-key" {
+#  algorithm = "RSA"
+#}
+#
+#module "key_pair" {
+#  source = "terraform-aws-modules/key-pair/aws"
+#
+#  key_name = var.name
+#  public_key = trimspace(tls_private_key.wave-key.public_key_openssh)
+#}
 
-
-
-resource "null_resource" "key-wave" {
-  provisioner "local-exec" {
-    command = <<-EOT
-      sudo echo '${tls_private_key.wave-key.private_key_pem}' > ./'${var.name}'.pem
-      sudo chmod 400 ./'${var.name}'.pem
-    EOT
-  }
-}
+#
+#
+#resource "null_resource" "key-wave" {
+#  provisioner "local-exec" {
+#    command = <<-EOT
+#      sudo echo '${tls_private_key.wave-key.private_key_pem}' > ./'${var.name}'.pem
+#      sudo chmod 400 ./'${var.name}'.pem
+#    EOT
+#  }
+#}
 
 
 variable "vpc_id" {}
@@ -160,5 +168,4 @@ variable "name" {}
 variable "ami" {}
 variable "instance" {}
 #variable "ssh_key_private" {}
-
-
+variable ssh_key {}
