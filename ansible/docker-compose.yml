@@ -1,5 +1,5 @@
 web:
-  image: sandeepcomsole/sandy:nginx-1
+  image: nginx
   volumes:
    - ./templates:/etc/nginx/templates
   ports:

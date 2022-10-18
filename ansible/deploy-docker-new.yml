@@ -51,14 +51,14 @@
             name: docker
             state: started
 
-#    - name: create new linux user
-#      hosts: localhost
-#      become: yes
-#      tasks:
-#        - name: create new linux user
-#          user:
-#            name: sandy
-##            groups: "{{user_groups}}"
+    - name: create new linux user
+      hosts: localhost
+      become: yes
+      tasks:
+        - name: create new linux user
+          user:
+            name: sandy
+#            groups: "{{user_groups}}"
 
 
     - name: start docker compose
@@ -72,11 +72,11 @@
           copy:
             src: /home/centos/ansible-try/ansible/docker-compose.yml
             dest: /home/sandy/docker-compose.yml
-        - name: docker login
-          docker_login:
-            registry_url: https://index.docker.io/v1/
-            username: sandeepcomsole
-            password: "{{password}}"
+#        - name: docker login
+#          docker_login:
+#            registry_url: https://index.docker.io/v1/
+#            username: sandeepcomsole
+#            password: "{{password}}"
         - name: start container form docker compose
           docker_compose:
             project_src: /home/sandy
