@@ -34,6 +34,17 @@ module "eks" {
       desired_size           = 1
       vpc_security_group_ids = [module.sg.security_group_id]
     }
+
+    THREE = {
+      name           = "${var.NAME}-3"
+      instance_types = [
+        "t3.medium"
+      ]
+      min_size               = 1
+      max_size               = 2
+      desired_size           = 1
+      vpc_security_group_ids = [module.sg.security_group_id]
+    }
   }
 }
 
