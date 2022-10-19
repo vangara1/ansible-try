@@ -1,0 +1,11 @@
+---
+- name: deploy app in new namespace
+  hosts: localhost
+  tasks:
+    - name: create a k8s namespace
+      k8s:
+        name: ansible
+        api_version: v1
+        kind: Namespace
+        state: present
+        kubeconfig: /root/ansible-try/EKS/kubeconfig_Never
