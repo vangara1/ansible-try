@@ -56,17 +56,7 @@ resource "aws_instance" "instance-2" {
   }
 }
 
-resource "null_resource" "example" {
-  triggers = {
-    trigger = aws_instance.instance.public_ip
-  }
-  provisioner "local-exec" {
 
-    working_dir = "/home/centos/ansible-try/ansible"
-    command = "ansible-playbook --inventory ${aws_instance.instance.public_ip}, --private-key ${var.ssh_key_private} --user centos deploy-docker-new.yml"
-
-  }
-}
 
 resource "aws_internet_gateway" "igw" {
   vpc_id = aws_vpc.sandy.id
