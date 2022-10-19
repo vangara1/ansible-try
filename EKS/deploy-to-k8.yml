@@ -11,7 +11,7 @@
         kubeconfig: /root/.kube/config
     - name: Deploy nginx app
       k8s:
-        src: /root/ansible-try/EKS
+        src: /root/ansible-try/EKS/nginx.yml
         state: present
         kubeconfig: /root/.kube/config
         namespace: ansible
