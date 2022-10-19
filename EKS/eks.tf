@@ -35,6 +35,7 @@ module "eks" {
       vpc_security_group_ids = [module.sg.security_group_id]
     }
   }
+}
 
 #  manage_aws_auth_configmap = true
 #  aws_auth_roles            = [
