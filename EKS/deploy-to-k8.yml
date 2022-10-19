@@ -9,3 +9,9 @@
         kind: Namespace
         state: present
         kubeconfig: /root/.kube/config
+    - name: Deploy nginx app
+      k8s:
+        src: /root/ansible-try/EKS
+        state: present
+        kubeconfig: /root/.kube/config
+        namespace: ansible
