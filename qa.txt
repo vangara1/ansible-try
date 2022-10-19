@@ -1,0 +1,78 @@
+company details:
+    - website:                     https://www.dhatsol.com/
+    - ctc:                         4,80,000 [take home - 39800]
+    - what are expecting:          my expecting
+    - pf:                          ops [my company gave me an option,so i haven't taken the pf ]
+    - form 16:                     yes i can provide you that
+    - LWD:                   -------------------------
+    - notice period:               30 days
+    - negotiable:                  i have to check with my project manager, if my manager accept my request then yes i will be able to negotiable
+    - company location:            [PJR Arcade
+                                       Plot No. 129/A, Suite #2,
+                                       Sri Sai Nagar,
+                                       Kukatpally, Hyderabad - 500085] - hyderabad location
+                              - [Wellington Central, New Zealand] - new zealand location
+                              - [Berlin, Germany] - germany location
+
+    - land mark:                  opp to sri chaitanya college
+    - no .of employees:           there are 100+ members in our company but we only have sitting for 20-30 people,
+                                         because working environment of our company is hybrid.
+         then how do you work:    as i said our company works as hybrid mode, i frequently go to the office based on the work preference.
+         then or you ready to work from office,
+                as your habited to the hybrid mode:   yes, i am ready to work from office. i am ready to change my routine.
+    - relocation:                 yes am ok with relocating.
+    - team:                       size of my team is 30 members
+    - your colleges mail ids:     yes {1- rajesh@dhasol.com 2- prudiv@dhasol.com}
+    - company mail id:            hr@dhatsol.com
+    - experience:                 4+ yrs
+    - company id card :           yes i can show you that
+    - pay slips:                  yes i can provide you that
+    - bank statement:             yes i can provide you that
+    - offer letter:               yes i can provide you that
+            when did you get the offer letter: ---------------------
+    - joining letter:             yes i can provide you that
+            when did you join the company: ----------------------
+    - resignation mail:           yes i can provide you that
+            when did you apply the resignation: ------------------
+    - experience letter:          yes i can provide you that, once i get it after my last working day
+    - reason for company change:  my current employee doesn't provide the salary on time,they pay very late
+        what if we delay the payroll,
+            would you also move out from our company too:   no, i wouldn't do that because i enquired about your company,
+                                                                 and your company pay salaries on time.
+    - designation:               DevOps engineer [level 3]
+         how many levels do you have in your company : -------------------------
+         why are you at level 3: --------------------
+    - role:   -----------------------------
+    - responsibilities: -------------------------
+    - tell me about your self:      --------------------------
+    - tickets or how do your company assign you the tasks: we use the platform called jira, for internal operations and assign the task based on the roles.
+                                                                the mater of fact , i would mostly finish my tasks on daily bases
+                                                                but on the uncertain day, when i haven't finish my task, i use to extend my working hours to finish the task.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
