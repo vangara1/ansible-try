@@ -13,18 +13,36 @@ module "eks" {
     #    create_security_group                 = false
   }
   eks_managed_node_groups = {
+    ONE = {
+      name           = "${var.NAME}-1"
+      instance_types = [
+        "t3.medium"
+      ]
+      min_size               = 1
+      max_size               = 2
+      desired_size           = 1
+      vpc_security_group_ids = [module.sg.security_group_id]
+    }
 
-    name           = "${var.NAME}-1"
-    instance_types = [
-      "t3.small"
-    ]
-    min_size               = 1
-    max_size               = 3
-    desired_size           = 3
-    vpc_security_group_ids = [module.sg.security_group_id]
+    TWO = {
+      name           = "${var.NAME}-2"
+      instance_types = [
+        "t3.medium"
+      ]
+      min_size               = 1
+      max_size               = 2
+      desired_size           = 1
+      vpc_security_group_ids = [module.sg.security_group_id]
+    }
   }
 
-}
-
-
-
+#  manage_aws_auth_configmap = true
+#  aws_auth_roles            = [
+#    {
+#      rolearn  = module.eks_admins_iam_role.iam_role_arn
+#      username = module.eks_admins_iam_role.iam_role_name
+#      groups   = ["system:masters"]
+#    },
+#  ]
+#
+#
