@@ -4,7 +4,7 @@ module "vpc" {
 
   name               = "${var.NAME}-vpc"
   cidr               = var.CIDR
-  azs                = var.AZ
+  azs                = data.aws_availability_zones.available.names
   private_subnets    = var.PVT-SUBNET
   public_subnets     = var.SUBNET
 
@@ -24,8 +24,6 @@ module "vpc" {
     "kubernetes.io/role/internal-elb"             = 1
   }
 }
-
-
 
 
 
