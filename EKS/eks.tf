@@ -23,9 +23,7 @@ module "eks" {
     desired_size           = 3
     vpc_security_group_ids = [module.sg.security_group_id]
   }
-  tags = {
-   Name = var.NAME
-  }
+
 }
 
 
