@@ -1,4 +1,4 @@
-- name: create new linux user
-  user:
-    name: sandy
-    groups: adm, docker
+   - name: create new linux user
+     user:
+      name: sandy
+      groups: adm, docker
