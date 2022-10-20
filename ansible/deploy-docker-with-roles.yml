@@ -64,5 +64,5 @@
       vars_files:
         - install-vars
       roles:
-        - start_contianers
+        - start_containers
 
